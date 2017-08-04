@@ -1,0 +1,474 @@
+{
+  "name": "Rusterm",
+  "description": "Imported database from sql server 'analytics-db-server.database.windows.net' and database 'analytics_db'",
+  "compatibilityLevel": 1200,
+  "model": {
+    "name": "Rusterm",
+    "description": "A Tabular data model at the 1200 compatibility levelcommit12.",
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer analytics-db-server.database.windows.net analytics_db",
+        "description": "A data source definition that uses explicit sql server credentials from connection string",
+        "connectionString": "Provider=SQLNCLI11;Server=tcp:analytics-db-server.database.windows.net;Initial Catalog=analytics_db;Persist Security Info=False;User ID=analytics_admin;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30",
+        "impersonationMode": "impersonateServiceAccount"
+      }
+    ],
+    "tables": [
+      {
+        "name": "SalesLT.Customer",
+        "description": "All data from SalesLT.Customer",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isNullable": false,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "NameStyle",
+            "dataType": "boolean",
+            "isHidden": true,
+            "isNullable": false,
+            "sourceColumn": "NameStyle",
+            "displayOrdinal": 1,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Title",
+            "displayOrdinal": 2,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "isHidden": true,
+            "isNullable": false,
+            "sourceColumn": "FirstName",
+            "displayOrdinal": 3,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "MiddleName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MiddleName",
+            "displayOrdinal": 4,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "LastName",
+            "displayOrdinal": 5
+          },
+          {
+            "name": "Suffix",
+            "dataType": "string",
+            "sourceColumn": "Suffix",
+            "displayOrdinal": 6,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName",
+            "displayOrdinal": 7
+          },
+          {
+            "name": "SalesPerson",
+            "dataType": "string",
+            "sourceColumn": "SalesPerson",
+            "displayOrdinal": 8
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress",
+            "displayOrdinal": 9
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone",
+            "displayOrdinal": 10
+          },
+          {
+            "name": "PasswordHash",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "PasswordHash",
+            "displayOrdinal": 11
+          },
+          {
+            "name": "PasswordSalt",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "PasswordSalt",
+            "displayOrdinal": 12
+          },
+          {
+            "name": "rowguid",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "rowguid",
+            "displayOrdinal": 13
+          },
+          {
+            "name": "ModifiedDate",
+            "dataType": "dateTime",
+            "isNullable": false,
+            "sourceColumn": "ModifiedDate",
+            "displayOrdinal": 14
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesLT.Customer",
+            "source": {
+              "query": "SELECT [CustomerID],[NameStyle],[Title],[FirstName],[MiddleName],[LastName],[Suffix],[CompanyName],[SalesPerson],[EmailAddress],[Phone],[PasswordHash],[PasswordSalt],[rowguid],[ModifiedDate] FROM SalesLT.Customer",
+              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "mes",
+            "expression": "SUM('SalesLT.ProductDescription'[ProductDescriptionID])"
+          }
+        ]
+      },
+      {
+        "name": "SalesLT.ProductModel",
+        "description": "All data from SalesLT.ProductModel",
+        "columns": [
+          {
+            "name": "ProductModelID",
+            "dataType": "int64",
+            "isNullable": false,
+            "sourceColumn": "ProductModelID"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "Name",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "CatalogDescription",
+            "dataType": "string",
+            "sourceColumn": "CatalogDescription",
+            "displayOrdinal": 2
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesLT.ProductModel",
+            "source": {
+              "query": "SELECT [ProductModelID],[Name],[CatalogDescription],[rowguid],[ModifiedDate] FROM SalesLT.ProductModel",
+              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SalesLT.ProductDescription",
+        "description": "All data from SalesLT.ProductDescription",
+        "columns": [
+          {
+            "name": "ProductDescriptionID",
+            "dataType": "int64",
+            "isNullable": false,
+            "sourceColumn": "ProductDescriptionID"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "Description",
+            "displayOrdinal": 1
+          },
+          {
+            "name": "${{<script>alert()</script>}}",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "rowguid",
+            "displayOrdinal": 2
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesLT.ProductDescription",
+            "source": {
+              "query": "SELECT [ProductDescriptionID],[Description],[rowguid],[ModifiedDate] FROM SalesLT.ProductDescription",
+              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SalesLT.Product",
+        "description": "All data from SalesLT.Product",
+        "columns": [
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isNullable": false,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "Name",
+            "displayOrdinal": 1,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "ProductNumber",
+            "dataType": "string",
+            "isNullable": false,
+            "sourceColumn": "ProductNumber",
+            "displayOrdinal": 2,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "Color",
+            "dataType": "string",
+            "sourceColumn": "Color",
+            "displayOrdinal": 3,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "StandardCost",
+            "dataType": "decimal",
+            "isNullable": false,
+            "sourceColumn": "StandardCost",
+            "displayOrdinal": 4
+          },
+          {
+            "name": "Size",
+            "dataType": "string",
+            "sourceColumn": "Size",
+            "displayOrdinal": 6
+          },
+          {
+            "name": "Weight",
+            "dataType": "decimal",
+            "sourceColumn": "Weight",
+            "displayOrdinal": 7
+          },
+          {
+            "name": "ProductCategoryIDNew",
+            "dataType": "int64",
+            "sourceColumn": "ProductCategoryID",
+            "displayOrdinal": 8,
+            "displayFolder": "MyFolder"
+          },
+          {
+            "name": "ProductModelID",
+            "dataType": "int64",
+            "sourceColumn": "ProductModelID",
+            "displayOrdinal": 9
+          },
+          {
+            "name": "SellStartDate",
+            "dataType": "dateTime",
+            "isNullable": false,
+            "sourceColumn": "SellStartDate",
+            "displayOrdinal": 10
+          },
+          {
+            "name": "SellEndDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SellEndDate",
+            "displayOrdinal": 11
+          },
+          {
+            "name": "DiscontinuedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "DiscontinuedDate",
+            "displayOrdinal": 12
+          },
+          {
+            "name": "ThumbNailPhoto",
+            "dataType": "binary",
+            "sourceColumn": "ThumbNailPhoto",
+            "displayOrdinal": 13
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesLT.Product",
+            "source": {
+              "query": "SELECT [ProductID],[Name],[ProductNumber],[Color],[StandardCost],[ListPrice],[Size],[Weight],[ProductCategoryID],[ProductModelID],[SellStartDate],[SellEndDate],[DiscontinuedDate],[ThumbNailPhoto],[ThumbnailPhotoFileName],[rowguid],[ModifiedDate] FROM SalesLT.Product",
+              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "mesColor",
+            "expression": "SUM('SalesLT.Product'[Color])"
+          },
+          {
+            "name": "mesSize1",
+            "expression": "COUNT('SalesLT.Product'[Name])"
+          },
+          {
+            "name": "mesWeight",
+            "expression": "SUM('SalesLT.Product'[Weight])"
+          },
+          {
+            "name": "sumCoast",
+            "expression": "SUM('SalesLT.Product'[StandardCost])"
+          },
+          {
+            "name": "test",
+            "expression": "SUM('SalesLT.Product'[StandardCost])"
+          },
+          {
+            "name": "Measure"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Category",
+            "displayFolder": "MyFolder",
+            "levels": [
+              {
+                "name": "ProductCategoryID",
+                "ordinal": 0,
+                "column": "ProductCategoryIDNew"
+              },
+              {
+                "name": "ProductID",
+                "ordinal": 1,
+                "column": "ProductID"
+              },
+              {
+                "name": "ProductNumber",
+                "ordinal": 2,
+                "column": "ProductNumber"
+              }
+            ]
+          },
+          {
+            "name": "Category1",
+            "levels": [
+              {
+                "name": "ProductModelID",
+                "ordinal": 0,
+                "column": "ProductModelID"
+              },
+              {
+                "name": "ProductCategoryID123",
+                "ordinal": 1,
+                "column": "ProductCategoryIDNew"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SalesLT.ProductModelProductDescription",
+        "description": "All data from SalesLT.ProductModelProductDescription",
+        "columns": [
+          {
+            "name": "ProductModelID",
+            "dataType": "int64",
+            "description": "1",
+            "isNullable": false,
+            "sourceColumn": "ProductModelID",
+            "displayFolder": "1"
+          },
+          {
+            "name": "ProductDescriptionID",
+            "dataType": "int64",
+            "description": "1",
+            "isNullable": false,
+            "sourceColumn": "ProductDescriptionID",
+            "displayOrdinal": 1,
+            "displayFolder": "1"
+          },
+          {
+            "name": "Culture",
+            "dataType": "string",
+            "description": "1",
+            "isNullable": false,
+            "sourceColumn": "Culture",
+            "displayOrdinal": 2,
+            "displayFolder": "1"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesLT.ProductModelProductDescription",
+            "source": {
+              "query": "SELECT [ProductModelID],[ProductDescriptionID],[Culture],[rowguid],[ModifiedDate] FROM SalesLT.ProductModelProductDescription",
+              "dataSource": "SqlServer analytics-db-server.database.windows.net analytics_db"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SalesLT.ProductAggregateTable",
+        "description": "All aggregated data from SalesLT.Product",
+        "partitions": [
+          {
+            "name": "SalesLT.ProductAggregateTable",
+            "source": {
+              "type": "calculated",
+              "expression": "SUMMARIZE(SalesLT.Product, SellStartDate[CalendarYear], \"ProductID\", SUM(SalesLT.Product[ProductID]))"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "ccd9e9c9-6485-418f-93a6-50c1205b3aac",
+        "fromTable": "SalesLT.Product",
+        "fromColumn": "ProductModelID",
+        "toTable": "SalesLT.ProductModel",
+        "toColumn": "ProductModelID"
+      },
+      {
+        "name": "5e0063b0-afab-405c-aa25-de5f174c579e",
+        "fromTable": "SalesLT.ProductModelProductDescription",
+        "fromColumn": "ProductDescriptionID",
+        "toTable": "SalesLT.ProductDescription",
+        "toColumn": "ProductDescriptionID"
+      },
+      {
+        "name": "484a04c8-dd89-4697-b34c-96071986a089",
+        "fromTable": "SalesLT.ProductModelProductDescription",
+        "fromColumn": "ProductModelID",
+        "toTable": "SalesLT.ProductModel",
+        "toColumn": "ProductModelID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "GitHubRepositoryUrl",
+        "value": "education"
+      },
+      {
+        "name": "Owner",
+        "value": {
+          "login": "maximnezabotin"
+        }
+      },
+      {
+        "name": "ASW-DEFAULT-DIAGRAM",
+        "value": "{\"Name\":\"default\",\"Tables\":[{\"TableName\":\"SalesLT.ProductDescription\",\"X\":1071,\"Y\":169,\"Z\":5,\"Width\":225,\"Height\":275},{\"TableName\":\"SalesLT.ProductModelProductDescription\",\"X\":240,\"Y\":169,\"Z\":6,\"Width\":225,\"Height\":275},{\"TableName\":\"SalesLT.Product\",\"X\":698,\"Y\":438,\"Z\":1,\"Width\":225,\"Height\":275},{\"TableName\":\"SalesLT.Customer\",\"X\":0,\"Y\":0,\"Z\":4,\"Width\":225,\"Height\":275},{\"TableName\":\"SalesLT.ProductModel\",\"X\":9,\"Y\":440,\"Z\":3,\"Width\":225,\"Height\":275},{\"TableName\":\"SalesLT.ProductAggregateTable\",\"X\":663,\"Y\":29,\"Z\":2,\"Width\":225,\"Height\":275}]}"
+      }
+    ]
+  }
+}
